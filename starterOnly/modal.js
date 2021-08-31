@@ -69,9 +69,10 @@ function closeModal() {
   {erreur_prenom.textContent="Le prénom doit comporter 2 charactères minimum sans accent et uniquement des lettres.";
   erreur_prenom.style.fontSize = "14px";
   erreur_prenom.style.color = "red";
-}else{
+  }
+  else{
   erreur_prenom.textContent=""; //pas d'erreur donc pas de message
-}
+  }
 
 /*verification le nom est vide ou à moins de 2 charactères ou contient des chiffres*/
 
@@ -79,9 +80,10 @@ function closeModal() {
   {erreur_nom.textContent="Le nom doit comporter 2 charactères minimum sans accent et uniquement des lettres."
   erreur_nom.style.fontSize = "14px";
   erreur_nom.style.color = "red";
-}else{
+  } 
+  else{
   erreur_nom.textContent="";//pas d'erreur donc pas de message
-};
+  }
 
 
 //verification email valide
@@ -94,7 +96,7 @@ function closeModal() {
     erreur_messagerie.textContent ="Veuillez entrer une adresse de messagerie valide";
     erreur_messagerie.style.fontSize = "14px";
     erreur_messagerie.style.color = "red";  
-};
+  } 
 
 
 //verification date de naissance valide
@@ -107,7 +109,7 @@ function closeModal() {
     erreur_naissance.textContent ="Veuillez entrer une date de naissance valide";
     erreur_naissance.style.fontSize = "14px";
     erreur_naissance.style.color = "red";
-};
+  }
 
 
 //verification nombre de tournois compris entre 0 et 99
@@ -116,11 +118,11 @@ function closeModal() {
   erreur_nbTournois.textContent="Vous devez entrer un nombre dans ce champ";
   erreur_nbTournois.style.fontSize = "14px";
   erreur_nbTournois.style.color = "red";
-  }
+ }
   else
   {
     erreur_nbTournois.textContent=""
-  };
+  }
 
 
 //On teste si une des villes est coché sinon message d'erreur
@@ -146,9 +148,9 @@ focuscgu.checked === true
   erreur_cgu.textContent="Vous devez accepter les conditions d'utilisation";
   erreur_cgu.style.fontSize = "14px";
   erreur_cgu.style.color = "red"
-  }
+ }
   e.preventDefault();//bloque l'envoi automatique du formulaire s'il n'est pas correctement rempli
-}
+
 
 
 //Envoi formulaire au clic sur c'est parti si tout le formulaire est ok
@@ -167,5 +169,4 @@ container_formulaire.style.paddingRight = "100px";
 bouton_fermer.style.display = "block";
 bouton_fermer.addEventListener("click", closeModal);
 }
-});
-
+})
