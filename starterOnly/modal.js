@@ -66,7 +66,7 @@ function closeModal() {
   formulaire.addEventListener("submit", soumettre);
   function soumettre(e){
   /*verification le prénom est vide ou à moins de 2 charactères ou contient des chiffres*/
-  if (prenom.value ===0 || prenom.value.length <=2 || regexLettres.test(prenom.value) == false)
+  if (prenom.value ===0 || prenom.value.length <2 || regexLettres.test(prenom.value) == false)
   {erreur_prenom.textContent="Le prénom doit comporter 2 charactères minimum sans accent et uniquement des lettres.";
   erreur_prenom.style.fontSize = "14px";
   erreur_prenom.style.color = "red";
@@ -76,7 +76,7 @@ function closeModal() {
 
 /*verification le nom est vide ou à moins de 2 charactères ou contient des chiffres*/
 
-  if (nom.value ===0 || nom.value.length <=2 || regexLettres.test(nom.value)==false)
+  if (nom.value ===0 || nom.value.length <2 || regexLettres.test(nom.value)==false)
   {erreur_nom.textContent="Le nom doit comporter 2 charactères minimum sans accent et uniquement des lettres."
   erreur_nom.style.fontSize = "14px";
   erreur_nom.style.color = "red";
