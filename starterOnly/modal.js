@@ -63,8 +63,8 @@ function closeModal() {
 }
 //Vérifications entrées formulaire
 
-  formulaire.addEventListener("submit", soumettre);
-  function soumettre(e){
+formulaire.addEventListener("submit", soumettre);
+function soumettre(e){
   /*verification le prénom est vide ou à moins de 2 charactères ou contient des chiffres*/
 if (prenom.value ===0 || prenom.value.length <2 || regexLettres.test(prenom.value) == false)
   {erreur_prenom.textContent="Le prénom doit comporter 2 charactères minimum sans accent et uniquement des lettres.";
