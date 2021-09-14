@@ -66,21 +66,23 @@ function closeModal() {
 formulaire.addEventListener("submit", soumettre);
 function soumettre(e){
   /*verification le prénom est vide ou à moins de 2 charactères ou contient des chiffres*/
-if (prenom.value ===0 || prenom.value.length <2 || regexLettres.test(prenom.value) == false)
-  {erreur_prenom.textContent="Le prénom doit comporter 2 charactères minimum sans accent et uniquement des lettres.";
+if (prenom.value ===0 || prenom.value.length <2 || regexLettres.test(prenom.value) == false){
+  erreur_prenom.textContent="Le prénom doit comporter 2 charactères minimum sans accent et uniquement des lettres.";
   erreur_prenom.style.fontSize = "14px";
   erreur_prenom.style.color = "red";
-}else{
+  }
+else{
   erreur_prenom.textContent=""; //pas d'erreur donc pas de message
   }
 
 /*verification le nom est vide ou à moins de 2 charactères ou contient des chiffres*/
 
-if (nom.value ===0 || nom.value.length <2 || regexLettres.test(nom.value)==false)
-  {erreur_nom.textContent="Le nom doit comporter 2 charactères minimum sans accent et uniquement des lettres."
+if (nom.value ===0 || nom.value.length <2 || regexLettres.test(nom.value)==false){
+  erreur_nom.textContent="Le nom doit comporter 2 charactères minimum sans accent et uniquement des lettres."
   erreur_nom.style.fontSize = "14px";
   erreur_nom.style.color = "red";
-}else{
+  }
+else{
   erreur_nom.textContent="";//pas d'erreur donc pas de message
   }
 
@@ -128,7 +130,8 @@ else
 if((villeNY.checked) || (villeSF.checked) || (villeSeattle.checked) ||
 (villeChicago.checked) ||(villeBoston.checked) ||(villePortland.checked)){
   erreur_ville.textContent ="";
-}else{
+}
+else{
   erreur_ville.textContent="Vous devez sélectionner une ville";
   erreur_ville.style.fontSize = "14px";
   erreur_ville.style.color = "red";
