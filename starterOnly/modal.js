@@ -171,6 +171,7 @@ container_formulaire.style.paddingLeft = "100px";
 container_formulaire.style.paddingRight = "100px";
 bouton_fermer.style.display = "block";
 bouton_fermer.addEventListener("click", closeModal);
+console.log ("Formulaire envoyé Bravo")
 }
 }
 )
