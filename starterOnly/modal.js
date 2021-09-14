@@ -1,4 +1,3 @@
-
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -66,91 +65,91 @@ function closeModal() {
 formulaire.addEventListener("submit", soumettre);
 function soumettre(e){
   /*verification le prénom est vide ou à moins de 2 charactères ou contient des chiffres*/
-if (prenom.value ===0 || prenom.value.length <2 || regexLettres.test(prenom.value) == false){
+ if (prenom.value ===0 || prenom.value.length <2 || regexLettres.test(prenom.value) == false){
   erreur_prenom.textContent="Le prénom doit comporter 2 charactères minimum sans accent et uniquement des lettres.";
   erreur_prenom.style.fontSize = "14px";
   erreur_prenom.style.color = "red";
   }
-else{
+ else{
   erreur_prenom.textContent=""; //pas d'erreur donc pas de message
   }
 
-/*verification le nom est vide ou à moins de 2 charactères ou contient des chiffres*/
+ /*verification le nom est vide ou à moins de 2 charactères ou contient des chiffres*/
 
-if (nom.value ===0 || nom.value.length <2 || regexLettres.test(nom.value)==false){
+ if (nom.value ===0 || nom.value.length <2 || regexLettres.test(nom.value)==false){
   erreur_nom.textContent="Le nom doit comporter 2 charactères minimum sans accent et uniquement des lettres."
   erreur_nom.style.fontSize = "14px";
   erreur_nom.style.color = "red";
   }
-else{
+ else{
   erreur_nom.textContent="";//pas d'erreur donc pas de message
   }
 
 
-//verification email valide
+ //verification email valide
 
-if(regexMessagerie.test(messagerie.value)){// test regex mail ok
+ if(regexMessagerie.test(messagerie.value)){// test regex mail ok
     erreur_messagerie.textContent ="";
     // Pas d'erreur
   }
-else{// Caractère absent ou ne répondant pas aux conditions du regex
+ else{// Caractère absent ou ne répondant pas aux conditions du regex
     erreur_messagerie.textContent ="Veuillez entrer une adresse de messagerie valide";
     erreur_messagerie.style.fontSize = "14px";
     erreur_messagerie.style.color = "red";  
   }
 
 
-//verification date de naissance valide
+ //verification date de naissance valide
 
-if(regexDateNaissance.test(naissance.value)){// test regex ok
+ if(regexDateNaissance.test(naissance.value)){// test regex ok
     erreur_naissance.textContent ="";
     // Pas d'erreur
     }
-else{// Caractère absent ou ne répondant pas aux conditions du regex
+ else{// Caractère absent ou ne répondant pas aux conditions du regex
     erreur_naissance.textContent ="Veuillez entrer une date de naissance valide";
     erreur_naissance.style.fontSize = "14px";
     erreur_naissance.style.color = "red";
   }
 
 
-//verification nombre de tournois compris entre 0 et 99
+ //verification nombre de tournois compris entre 0 et 99
 
-if (nombre_tournois.value === ""){
+ if (nombre_tournois.value === ""){
   erreur_nbTournois.textContent="Vous devez entrer un nombre dans ce champ";
   erreur_nbTournois.style.fontSize = "14px";
   erreur_nbTournois.style.color = "red";
   }
-else
+ else
   {
     erreur_nbTournois.textContent=""
   }
 
 
-//On teste si une des villes est coché sinon message d'erreur
-if((villeNY.checked) || (villeSF.checked) || (villeSeattle.checked) ||
-(villeChicago.checked) ||(villeBoston.checked) ||(villePortland.checked)){
+  //On teste si une des villes est coché sinon message d'erreur
+ if((villeNY.checked) || (villeSF.checked) || (villeSeattle.checked) ||
+ (villeChicago.checked) ||(villeBoston.checked) ||(villePortland.checked)){
   erreur_ville.textContent ="";
  }
-else
+ else
  {
   erreur_ville.textContent="Vous devez sélectionner une ville";
   erreur_ville.style.fontSize = "14px";
   erreur_ville.style.color = "red";
  }
 
-//CGU cochée par défaut
-focuscgu.checked === true
+ //CGU cochée par défaut
+ focuscgu.checked === true
 
-//vérification si cgu cochée
-if (focuscgu.checked)
+ //vérification si cgu cochée
+ if (focuscgu.checked)
  {
   erreur_cgu.textContent="";
  }
-else
+ else
  {
   erreur_cgu.textContent="Vous devez accepter les conditions d'utilisation";
   erreur_cgu.style.fontSize = "14px";
-  erreur_cgu.style.color = "red"
+  erreur_cgu.style.color = "red";
  }
   e.preventDefault();//bloque l'envoi automatique du formulaire s'il n'est pas correctement rempli
 }
@@ -158,20 +157,20 @@ else
 
 //Envoi formulaire au clic sur c'est parti si tout le formulaire est ok
 envoi_formulaire.addEventListener("click", function() {
-if (prenom.value && nom.value && messagerie.value && naissance.value && nombre_tournois.value &&
-  ((villeNY.checked) || (villeSF.checked) || (villeSeattle.checked) ||
-  (villeChicago.checked) ||(villeBoston.checked) ||(villePortland.checked)) && focuscgu.checked === true)
-
-//Affichage de la page de remerciement
-{container_formulaire.textContent = "Merci, votre formulaire nous a bien été transmis";
-container_formulaire.style.fontFamily = "DM Sans";
-container_formulaire.style.height = "700px";
-container_formulaire.style.paddingTop = "300px";
-container_formulaire.style.paddingLeft = "100px";
-container_formulaire.style.paddingRight = "100px";
-bouton_fermer.style.display = "block";
-bouton_fermer.addEventListener("click", closeModal);
-console.log ("Formulaire envoyé Bravo")
-}
-}
+  if (prenom.value && nom.value && messagerie.value && naissance.value && nombre_tournois.value &&
+    ((villeNY.checked) || (villeSF.checked) || (villeSeattle.checked) ||
+    (villeChicago.checked) ||(villeBoston.checked) ||(villePortland.checked)) && focuscgu.checked === true)
+  
+  //Affichage de la page de remerciement
+   {container_formulaire.textContent = "Merci, votre formulaire nous a bien été transmis";
+   container_formulaire.style.fontFamily = "DM Sans";
+   container_formulaire.style.height = "700px";
+   container_formulaire.style.paddingTop = "300px";
+   container_formulaire.style.paddingLeft = "100px";
+   container_formulaire.style.paddingRight = "100px";
+   bouton_fermer.style.display = "block";
+   bouton_fermer.addEventListener("click", closeModal);
+   console.log ("Formulaire envoyé Bravo");
+   }
+  }
 )
