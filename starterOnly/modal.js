@@ -172,4 +172,5 @@ container_formulaire.style.paddingRight = "100px";
 bouton_fermer.style.display = "block";
 bouton_fermer.addEventListener("click", closeModal);
 }
-})
+}
+)
