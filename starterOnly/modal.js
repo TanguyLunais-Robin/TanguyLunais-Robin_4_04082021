@@ -130,12 +130,13 @@ else
 if((villeNY.checked) || (villeSF.checked) || (villeSeattle.checked) ||
 (villeChicago.checked) ||(villeBoston.checked) ||(villePortland.checked)){
   erreur_ville.textContent ="";
-}
-else{
+ }
+else
+ {
   erreur_ville.textContent="Vous devez sélectionner une ville";
   erreur_ville.style.fontSize = "14px";
   erreur_ville.style.color = "red";
-}
+ }
 
 //CGU cochée par défaut
 focuscgu.checked === true
@@ -150,7 +151,7 @@ else
   erreur_cgu.textContent="Vous devez accepter les conditions d'utilisation";
   erreur_cgu.style.fontSize = "14px";
   erreur_cgu.style.color = "red"
-  }
+ }
   e.preventDefault();//bloque l'envoi automatique du formulaire s'il n'est pas correctement rempli
 }
 
@@ -158,8 +159,8 @@ else
 //Envoi formulaire au clic sur c'est parti si tout le formulaire est ok
 envoi_formulaire.addEventListener("click", function() {
 if (prenom.value && nom.value && messagerie.value && naissance.value && nombre_tournois.value &&
-    ((villeNY.checked) || (villeSF.checked) || (villeSeattle.checked) ||
-(villeChicago.checked) ||(villeBoston.checked) ||(villePortland.checked)) && focuscgu.checked === true)
+  ((villeNY.checked) || (villeSF.checked) || (villeSeattle.checked) ||
+  (villeChicago.checked) ||(villeBoston.checked) ||(villePortland.checked)) && focuscgu.checked === true)
 
 //Affichage de la page de remerciement
 {container_formulaire.textContent = "Merci, votre formulaire nous a bien été transmis";
