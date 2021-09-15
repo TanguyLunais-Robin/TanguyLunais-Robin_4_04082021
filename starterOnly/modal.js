@@ -11,166 +11,158 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const buttonClose = document.querySelector(".close");
+const modalCross = document.getElementsByClassName("close");
 
-//sélection des balises du formulaires
-const prenom = document.getElementById('first');
-const erreur_prenom = document.getElementById('erreur_prenom');
-const nom = document.getElementById('last');
-const erreur_nom = document.getElementById('erreur_nom');
-const messagerie = document.getElementById('email');
-const erreur_messagerie = document.getElementById('erreur_email');
-const naissance = document.getElementById('birthdate');
-const erreur_naissance = document.getElementById('erreur_anniversaire');
-const nombre_tournois = document.getElementById('quantity');
-const erreur_nbTournois = document.getElementById('erreur_nombre');
-const villeNY = document.getElementById('location1');
-const villeSF = document.getElementById('location2');
-const villeSeattle = document.getElementById('location3');
-const villeChicago = document.getElementById('location4');
-const villeBoston = document.getElementById('location5');
-const villePortland = document.getElementById('location6');
-const erreur_ville = document.getElementById('erreur_ville');
-const focuscgu = document.getElementById('checkbox1');
-const erreur_cgu = document.getElementById('erreur_cgu');
-const formulaire = document.getElementById('formulaire');
-const envoi_formulaire = document.querySelector('.btn-submit');
-const container_formulaire = document.querySelector('.modal-body');
-const bouton_fermer = document.querySelector('.btn-fermer')
-
-
-//Regex
-const regexLettres = /^[a-zA-Z-\s]+$/;
-const regexMessagerie = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
-const regexDateNaissance = /^((19[3-9]+[0-9]|200[0-9])-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])|(0?[1-9]|[12]\d|3[01])[/](0?[1-9]|1[0-2])[/](19[3-9]+[0-9]|200[0-6]))$/;
-
-// listener bouton ouverture formulaire
+// launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// fonction pour faire apparaitre le formulaire
+// launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// listener fermeture formulaire au clic sur la croix
-buttonClose.addEventListener("click",closeModal);
-
-//Fonction de fermeture formulaire au clic sur la croix
+// Close modal form
 function closeModal() {
   modalbg.style.display = "none";
-
 }
-//Vérifications entrées formulaire
 
-formulaire.addEventListener("submit", soumettre);
-function soumettre(e){
-  /*verification le prénom est vide ou à moins de 2 charactères ou contient des chiffres*/
- if (prenom.value ===0 || prenom.value.length <2 || regexLettres.test(prenom.value) == false){
-  erreur_prenom.textContent="Le prénom doit comporter 2 charactères minimum sans accent et uniquement des lettres.";
-  erreur_prenom.style.fontSize = "14px";
-  erreur_prenom.style.color = "red";
-  }
- else{
-  erreur_prenom.textContent=""; //pas d'erreur donc pas de message
-  }
-
- /*verification le nom est vide ou à moins de 2 charactères ou contient des chiffres*/
-
- if (nom.value ===0 || nom.value.length <2 || regexLettres.test(nom.value)==false){
-  erreur_nom.textContent="Le nom doit comporter 2 charactères minimum sans accent et uniquement des lettres."
-  erreur_nom.style.fontSize = "14px";
-  erreur_nom.style.color = "red";
-  }
- else{
-  erreur_nom.textContent="";//pas d'erreur donc pas de message
-  }
+// Close modal event
+modalCross[0].addEventListener ("click", closeModal);
 
 
- //verification email valide
+// form must be valide when user click on "submit"
+const form = document.getElementById ('form');
+const firstName = document.getElementById ('first');
+const lastName = document.getElementById ('last');
+const eMail = document.getElementById ('email');
+const birthDate = document.getElementById ('birthdate');
+const quantityTournament = document.getElementById ('quantity');
+const loc1 = document.getElementById ('location1');
+const loc2 = document.getElementById ('location2');
+const loc3 = document.getElementById ('location3');
+const loc4 = document.getElementById ('location4');
+const loc5 = document.getElementById ('location5');
+const loc6 = document.getElementById ('location6');
+const dateFormat = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
+const numbers = /^[0-9]+$/;
 
- if(regexMessagerie.test(messagerie.value)){// test regex mail ok
-    erreur_messagerie.textContent ="";
-    // Pas d'erreur
-  }
- else{// Caractère absent ou ne répondant pas aux conditions du regex
-    erreur_messagerie.textContent ="Veuillez entrer une adresse de messagerie valide";
-    erreur_messagerie.style.fontSize = "14px";
-    erreur_messagerie.style.color = "red";  
-  }
+const validation = document.getElementById ('checkbox1')
+const errorFirst = document.getElementById ('error-first');
+const errorLast = document.getElementById ('error-last');
+const errorMail = document.getElementById ('error-mail');
+const errorBirth = document.getElementById ('error-birth');
+const errorQuantity = document.getElementById ('error-quantity');
+const errorCity = document.getElementById ('error-city');
+const errorValidation = document.getElementById ('error-validation');
+
+const confirmation = document.getElementById ('confirmation');
+const confirmationCloseBtn = document.getElementsByClassName('btn-close');
 
 
- //verification date de naissance valide
 
- if(regexDateNaissance.test(naissance.value)){// test regex ok
-    erreur_naissance.textContent ="";
-    // Pas d'erreur
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+})
+
+
+function validate () {
+  let firstChecked;
+  let lastChecked;
+  let mailChecked;
+  let birthChecked;
+  let tournamentChecked;
+  let radioChecked;
+  let conditionsChecked;
+
+  if (firstName.value === '' || firstName.value == null || firstName.value.length < 2) {
+    errorFirst.innerText = 'Veuillez entrer 2 caractères ou plus pour le champ du Prénom.';
+    errorFirst.style.color = 'red';
+    errorFirst.style.fontSize = '0.8rem';
+    errorFirst.style.marginTop = '10px';
+    firstName.style.border = 'solid red 2px';
+  } else {
+    errorFirst.style.display = 'none';
+    firstName.style.border = 'none';
+    firstChecked = true;
+  };
+
+    if (lastName.value === '' || lastName.value == null || lastName.value.length < 2) { 
+      errorLast.innerText = 'Veuillez entrer 2 caractères ou plus pour le champ du Nom.';
+      errorLast.style.color = 'red';
+      errorLast.style.fontSize = '0.8rem';
+      errorLast.style.marginTop = '10px';
+      lastName.style.border = 'solid red 2px';      
+  }  else {
+    errorLast.style.display = 'none';
+    lastName.style.border = 'none';
+    lastChecked = true;
+  };
+
+    if (!/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(eMail.value)) { 
+      errorMail.innerText = 'Veuillez renseigner une addresse mail valide';
+      errorMail.style.color = 'red';
+      errorMail.style.fontSize = '0.8rem';
+      errorMail.style.marginTop = '10px';
+      eMail.style.border = 'solid red 2px';
+  } else {
+      errorMail.style.display = 'none';
+      eMail.style.border = 'none';
+      mailChecked = true;
+  };
+
+  if (!birthDate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/)) { 
+    errorBirth.innerText = 'Veuillez remplir votre date d\'anniversaire';
+    errorBirth.style.color = 'red';
+    errorBirth.style.fontSize = '0.8rem';
+    errorBirth.style.marginTop = '10px';
+    birthDate.style.border = 'solid red 2px';
+    } else {
+    errorBirth.style.display = 'none';
+    birthDate.style.border = 'none';
+    birthChecked = true;      
     }
- else{// Caractère absent ou ne répondant pas aux conditions du regex
-    erreur_naissance.textContent ="Veuillez entrer une date de naissance valide";
-    erreur_naissance.style.fontSize = "14px";
-    erreur_naissance.style.color = "red";
+
+  if (!quantityTournament.value.match(numbers)) { 
+    errorQuantity.innerText = 'Vous devez indiquer un nombre';
+    errorQuantity.style.color = 'red';
+    errorQuantity.style.fontSize = '0.8rem';
+    errorQuantity.style.marginTop = '10px';
+    quantityTournament.style.border = 'solid red 2px';
+  } else {
+    errorQuantity.style.display = 'none';
+    quantityTournament.style.border = 'none';
+    tournamentChecked = true;
+  };
+
+  if (!loc1.checked && !loc2.checked && !loc3.checked && !loc4.checked && !loc5.checked && !loc6.checked) { 
+    errorCity.innerText = 'Vous devez choisir une ville';
+    errorCity.style.color = 'red';
+    errorCity.style.fontSize = '0.8rem';
+    errorCity.style.marginTop = '10px';          
+  } else {
+    errorCity.style.display = 'none';
+    radioChecked = true;
+  };
+
+  if (!validation.checked) {
+    errorValidation.innerText = 'Vous devez vérifier que vous acceptez les termes et conditions';
+    errorValidation.style.color = 'red';
+    errorValidation.style.fontSize = '0.8rem';
+    errorValidation.style.marginTop = '10px';
+    errorValidation.style.marginBottom = '20px';
+  } else {
+    errorValidation.style.display = 'none';
+    conditionsChecked = true;
+  };
+
+  if (firstChecked == true && lastChecked == true && mailChecked == true && tournamentChecked == true && radioChecked == true && conditionsChecked == true && birthChecked == true) {
+    form.style.display = "none";
+    confirmation.style.display = "flex";
+    console.log("Participation enregistrer Bravo !!");
   }
 
-
- //verification nombre de tournois compris entre 0 et 99
-
- if (nombre_tournois.value === ""){
-  erreur_nbTournois.textContent="Vous devez entrer un nombre dans ce champ";
-  erreur_nbTournois.style.fontSize = "14px";
-  erreur_nbTournois.style.color = "red";
-  }
- else
-  {
-    erreur_nbTournois.textContent=""
-  }
-
-
-  //On teste si une des villes est coché sinon message d'erreur
- if((villeNY.checked) || (villeSF.checked) || (villeSeattle.checked) ||
- (villeChicago.checked) ||(villeBoston.checked) ||(villePortland.checked)){
-  erreur_ville.textContent ="";
- }
- else
- {
-  erreur_ville.textContent="Vous devez sélectionner une ville";
-  erreur_ville.style.fontSize = "14px";
-  erreur_ville.style.color = "red";
- }
-
- //CGU cochée par défaut
- focuscgu.checked === true
-
- //vérification si cgu cochée
- if (focuscgu.checked)
- {
-  erreur_cgu.textContent="";
- }
- else
- {
-  erreur_cgu.textContent="Vous devez accepter les conditions d'utilisation";
-  erreur_cgu.style.fontSize = "14px";
-  erreur_cgu.style.color = "red";
- }
-  e.preventDefault();//bloque l'envoi automatique du formulaire s'il n'est pas correctement rempli
+  
 }
 
-
-//Envoi formulaire au clic sur c'est parti si tout le formulaire est ok
-envoi_formulaire.addEventListener("click", function() {
-  if (prenom.value && nom.value && messagerie.value && naissance.value && nombre_tournois.value &&
-    ((villeNY.checked) || (villeSF.checked) || (villeSeattle.checked) ||
-    (villeChicago.checked) ||(villeBoston.checked) ||(villePortland.checked)) && focuscgu.checked === true)
-  
-  //Affichage de la page de remerciement
-   {container_formulaire.textContent = "Merci, votre formulaire nous a bien été transmis";
-   container_formulaire.style.fontFamily = "DM Sans";
-   container_formulaire.style.height = "700px";
-   container_formulaire.style.paddingTop = "300px";
-   container_formulaire.style.paddingLeft = "100px";
-   container_formulaire.style.paddingRight = "100px";
-   bouton_fermer.style.display = "block";
-   bouton_fermer.addEventListener("click", closeModal);
-   console.log ("Formulaire envoyé Bravo");
-   }
-  }
-)
+// Close modal form
+confirmationCloseBtn[0].addEventListener("click", closeModal);
