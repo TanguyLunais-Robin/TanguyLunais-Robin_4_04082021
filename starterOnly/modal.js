@@ -84,7 +84,7 @@ function validate () {
     errorFirst.style.display = 'none';
     firstName.style.border = 'none';
     firstChecked = true;
-  };
+  }
 
     if (lastName.value === '' || lastName.value == null || lastName.value.length < 2) { 
       errorLast.innerText = 'Veuillez entrer 2 caractères ou plus pour le champ du Nom.';
@@ -96,7 +96,7 @@ function validate () {
     errorLast.style.display = 'none';
     lastName.style.border = 'none';
     lastChecked = true;
-  };
+  }
 
     if (!/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(eMail.value)) { 
       errorMail.innerText = 'Veuillez renseigner une addresse mail valide';
@@ -108,7 +108,7 @@ function validate () {
       errorMail.style.display = 'none';
       eMail.style.border = 'none';
       mailChecked = true;
-  };
+  }
 
   if (!birthDate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/)) { 
     errorBirth.innerText = 'Veuillez remplir votre date d\'anniversaire';
@@ -116,7 +116,7 @@ function validate () {
     errorBirth.style.fontSize = '0.8rem';
     errorBirth.style.marginTop = '10px';
     birthDate.style.border = 'solid red 2px';
-    } else {
+  } else {
     errorBirth.style.display = 'none';
     birthDate.style.border = 'none';
     birthChecked = true;      
@@ -132,7 +132,7 @@ function validate () {
     errorQuantity.style.display = 'none';
     quantityTournament.style.border = 'none';
     tournamentChecked = true;
-  };
+   }
 
   if (!loc1.checked && !loc2.checked && !loc3.checked && !loc4.checked && !loc5.checked && !loc6.checked) { 
     errorCity.innerText = 'Vous devez choisir une ville';
@@ -142,7 +142,7 @@ function validate () {
   } else {
     errorCity.style.display = 'none';
     radioChecked = true;
-  };
+  }
 
   if (!validation.checked) {
     errorValidation.innerText = 'Vous devez vérifier que vous acceptez les termes et conditions';
@@ -153,7 +153,7 @@ function validate () {
   } else {
     errorValidation.style.display = 'none';
     conditionsChecked = true;
-  };
+  }
 
   if (firstChecked == true && lastChecked == true && mailChecked == true && tournamentChecked == true && radioChecked == true && conditionsChecked == true && birthChecked == true) {
     form.style.display = "none";
