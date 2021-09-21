@@ -62,10 +62,12 @@ const confirmationCloseBtn = document.getElementsByClassName('btn-close');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  validate();
 })
 
 
 function validate () {
+  console.log ("validation formulaire");
   let firstChecked;
   let lastChecked;
   let mailChecked;
@@ -80,6 +82,7 @@ function validate () {
     errorFirst.style.fontSize = '0.8rem';
     errorFirst.style.marginTop = '10px';
     firstName.style.border = 'solid red 2px';
+    errorFirst.style.display = 'block';
   } else {
     errorFirst.style.display = 'none';
     firstName.style.border = 'none';
