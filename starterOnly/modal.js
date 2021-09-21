@@ -45,6 +45,8 @@ const loc5 = document.getElementById ('location5');
 const loc6 = document.getElementById ('location6');
 const dateFormat = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
 const numbers = /^[0-9]+$/;
+const regexDateNaissance = /^((19[3-9]+[0-9]|200[0-9])-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])|(0?[1-9]|[12]\d|3[01])[/](0?[1-9]|1[0-2])[/](19[3-9]+[0-9]|200[0-6]))$/;
+
 
 const validation = document.getElementById ('checkbox1')
 const errorFirst = document.getElementById ('error-first');
@@ -77,7 +79,7 @@ function validate () {
   let conditionsChecked;
 
   if (firstName.value === '' || firstName.value == null || firstName.value.length < 2) {
-    errorFirst.innerText = 'Veuillez entrer 2 caractères ou plus pour le champ du Prénom.';
+    errorFirst.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du Prénom.';
     errorFirst.style.color = 'red';
     errorFirst.style.fontSize = '0.8rem';
     errorFirst.style.marginTop = '10px';
@@ -113,16 +115,16 @@ function validate () {
       mailChecked = true;
   }
 
-  if (!birthDate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/)) { 
-    errorBirth.innerText = 'Veuillez remplir votre date d\'anniversaire';
+  if (regexDateNaissance.test(birthDate.value)) { 
+    errorBirth.style.display = 'none';
+    birthDate.style.border = 'none';
+    birthChecked = true; 
+  } else {
+    errorBirth.textContent = 'Veuillez remplir une date de naissance valide';
     errorBirth.style.color = 'red';
     errorBirth.style.fontSize = '0.8rem';
     errorBirth.style.marginTop = '10px';
-    birthDate.style.border = 'solid red 2px';
-  } else {
-    errorBirth.style.display = 'none';
-    birthDate.style.border = 'none';
-    birthChecked = true;      
+    birthDate.style.border = 'solid red 2px';    
     }
 
   if (!quantityTournament.value.match(numbers)) { 
