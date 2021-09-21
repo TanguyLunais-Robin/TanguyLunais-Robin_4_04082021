@@ -91,41 +91,41 @@ function validate () {
     firstChecked = true;
   }
 
-    if (lastName.value === '' || lastName.value == null || lastName.value.length < 2) { 
-      errorLast.innerText = 'Veuillez entrer 2 caractères ou plus pour le champ du Nom.';
-      errorLast.style.color = 'red';
-      errorLast.style.fontSize = '0.8rem';
-      errorLast.style.marginTop = '10px';
-      lastName.style.border = 'solid red 2px';      
-  }  else {
+  if (lastName.value === '' || lastName.value == null || lastName.value.length < 2) { 
+    errorLast.innerText = 'Veuillez entrer 2 caractères ou plus pour le champ du Nom.';
+    errorLast.style.color = 'red';
+    errorLast.style.fontSize = '0.8rem';
+    errorLast.style.marginTop = '10px';
+    lastName.style.border = 'solid red 2px';      
+  } else {
     errorLast.style.display = 'none';
     lastName.style.border = 'none';
     lastChecked = true;
   }
 
-    if (!/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(eMail.value)) { 
-      errorMail.innerText = 'Veuillez renseigner une addresse mail valide';
-      errorMail.style.color = 'red';
-      errorMail.style.fontSize = '0.8rem';
-      errorMail.style.marginTop = '10px';
-      eMail.style.border = 'solid red 2px';
+  if (!/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(eMail.value)) { 
+    errorMail.innerText = 'Veuillez renseigner une addresse mail valide';
+    errorMail.style.color = 'red';
+    errorMail.style.fontSize = '0.8rem';
+    errorMail.style.marginTop = '10px';
+    eMail.style.border = 'solid red 2px';
   } else {
-      errorMail.style.display = 'none';
-      eMail.style.border = 'none';
-      mailChecked = true;
+    errorMail.style.display = 'none';
+    eMail.style.border = 'none';
+    mailChecked = true;
   }
 
-  if (regexDateNaissance.test(birthDate.value)) { 
-    errorBirth.style.display = 'none';
-    birthDate.style.border = 'none';
-    birthChecked = true; 
-  } else {
-    errorBirth.textContent = 'Veuillez remplir une date de naissance valide';
+  if (!birthDate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/)) { 
+    errorBirth.innerText = 'Veuillez remplir votre date d\'anniversaire';
     errorBirth.style.color = 'red';
     errorBirth.style.fontSize = '0.8rem';
     errorBirth.style.marginTop = '10px';
-    birthDate.style.border = 'solid red 2px';    
-    }
+    birthDate.style.border = 'solid red 2px';
+  } else {
+    errorBirth.style.display = 'none';
+    birthDate.style.border = 'none';
+    birthChecked = true;      
+  }
 
   if (!quantityTournament.value.match(numbers)) { 
     errorQuantity.innerText = 'Vous devez indiquer un nombre';
@@ -137,7 +137,7 @@ function validate () {
     errorQuantity.style.display = 'none';
     quantityTournament.style.border = 'none';
     tournamentChecked = true;
-   }
+  }
 
   if (!loc1.checked && !loc2.checked && !loc3.checked && !loc4.checked && !loc5.checked && !loc6.checked) { 
     errorCity.innerText = 'Vous devez choisir une ville';
