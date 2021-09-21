@@ -96,7 +96,8 @@ function validate () {
     errorLast.style.color = 'red';
     errorLast.style.fontSize = '0.8rem';
     errorLast.style.marginTop = '10px';
-    lastName.style.border = 'solid red 2px';      
+    lastName.style.border = 'solid red 2px';
+    errorLast.style.display = 'block';     
   } else {
     errorLast.style.display = 'none';
     lastName.style.border = 'none';
@@ -109,6 +110,7 @@ function validate () {
     errorMail.style.fontSize = '0.8rem';
     errorMail.style.marginTop = '10px';
     eMail.style.border = 'solid red 2px';
+    errorMail.style.display = 'block';
   } else {
     errorMail.style.display = 'none';
     eMail.style.border = 'none';
@@ -121,6 +123,7 @@ function validate () {
     errorBirth.style.fontSize = '0.8rem';
     errorBirth.style.marginTop = '10px';
     birthDate.style.border = 'solid red 2px';
+    errorBirth.style.display = 'block'
   } else {
     errorBirth.style.display = 'none';
     birthDate.style.border = 'none';
